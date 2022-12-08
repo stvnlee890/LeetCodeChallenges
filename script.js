@@ -40,21 +40,46 @@
 
 // ===== 9. PALINDROME NUMBER =====
 
-var isPalindrome = function (x) {
-  // Convert number to string
-  const str = x.toString();
-  // create left and right pointers
-  let left = 0;
-  let right = str.length -1;
-  while (left < right) {
-    if (str[left] === str[right]) {
-      left++;
-      right--;
+// var isPalindrome = function (x) {
+//   // Convert number to string
+//   const str = x.toString();
+//   // create left and right pointers
+//   let left = 0;
+//   let right = str.length -1;
+//   while (left < right) {
+//     if (str[left] === str[right]) {
+//       left++;
+//       right--;
+//     } else {
+//       return false;
+//     }
+//   }
+//   return true
+// };
+
+// console.log(isPalindrome(10));
+
+// ===== 13. Roman to Integer ====
+
+const obj = {
+  I: 1,
+  V: 5,
+  X: 10,
+  L: 50,
+  C: 100,
+  D: 500,
+  M: 1000,
+};
+var romanToInt = function (s) {
+  let total = 0;
+  for (let i = 0; i < s.length; i++) {
+    if (obj[s[i - 1]] < obj[s[i]]) {
+        // Because the index next afterwards gets added, you need to subtract it again. 
+      total += obj[s[i]] - obj[s[i - 1]] - obj[s[i - 1]];
     } else {
-      return false;
+      total += obj[s[i]];
     }
   }
-  return true
+  return total
 };
-
-console.log(isPalindrome(10));
+console.log(romanToInt("MCMXCIV"));
