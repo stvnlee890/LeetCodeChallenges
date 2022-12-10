@@ -61,25 +61,42 @@
 
 // ===== 13. Roman to Integer ====
 
-const obj = {
-  I: 1,
-  V: 5,
-  X: 10,
-  L: 50,
-  C: 100,
-  D: 500,
-  M: 1000,
-};
-var romanToInt = function (s) {
-  let total = 0;
-  for (let i = 0; i < s.length; i++) {
-    if (obj[s[i - 1]] < obj[s[i]]) {
-        // Because the index next afterwards gets added, you need to subtract it again. 
-      total += obj[s[i]] - obj[s[i - 1]] - obj[s[i - 1]];
-    } else {
-      total += obj[s[i]];
+// const obj = {
+//   I: 1,
+//   V: 5,
+//   X: 10,
+//   L: 50,
+//   C: 100,
+//   D: 500,
+//   M: 1000,
+// };
+// var romanToInt = function (s) {
+//   let total = 0;
+//   for (let i = 0; i < s.length; i++) {
+//     if (obj[s[i - 1]] < obj[s[i]]) {
+//         // Because the index next afterwards gets added, you need to subtract it again.
+//       total += obj[s[i]] - obj[s[i - 1]] - obj[s[i - 1]];
+//     } else {
+//       total += obj[s[i]];
+//     }
+//   }
+//   return total
+// };
+// console.log(romanToInt("MCMXCIV"));
+
+// ===== 14. LONGEST COMMON PREFIX =====
+
+// SOLUTION CODE
+var longestCommonPrefix = function (strs) {
+  let prefix = "";
+  if(strs.length === 0) return prefix;
+  for (let i = 0; i < strs[0].length; i ++) {
+    const character = strs[0][i]
+    for(let j = 0; j < strs.length; j ++) {
+      if(strs[j][i] !== character) return prefix
     }
+    prefix += character
   }
-  return total
+  return prefix
 };
-console.log(romanToInt("MCMXCIV"));
+console.log(longestCommonPrefix(["pajama", "puma", "potato"]));
