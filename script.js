@@ -142,8 +142,8 @@
 //   while (start < nums.length) {
 //     if (nums[start] === val) {
 //       nums.splice(start, 1)
-//       // we have to decrement start because we're modifying the original array in-place. 
-//       // so after a new loop, we might "skip" over a value and not splice it. 
+//       // we have to decrement start because we're modifying the original array in-place.
+//       // so after a new loop, we might "skip" over a value and not splice it.
 //       start--;
 //     } else {
 //       start++;
@@ -153,3 +153,41 @@
 // };
 
 // console.log(removeElement([0,1,2,2,3,0,4,2], 2));
+
+// 1. Two Sum
+// Unsorted array
+// TIME COMPLEXITY: O(N)
+// we traverse through each element in the array
+// SPACE COMPLEXITY: O(N)
+// we store each element of the array, BEST CASE, we only store two values. But worst case is that
+// the two elements are at the end of the array.
+
+// var twoSum = function(nums, target) {
+//   let map = new Map()
+//   console.log(map)
+//   for (let i = 0; i < nums.length; i++) {
+//     let num1 = nums[i]
+//     let result = target - num1
+//     if (map.has(result)) {
+//       return [map.get(result), i]
+//     }
+//     map.set(num1, i);
+//   }
+// }
+
+// console.log(twoSum([1,4,2,7,11,15], 9))
+
+// TIME COMPLEXTIY: O(N^2)
+// SPACE COMPLEXITY: O(1)
+var twoSum = function (nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 1; j < nums.length; j++) {
+      let result = target - nums[i];
+      if (nums[j] === result) {
+        return [i, j];
+      }
+    }
+  }
+};
+
+console.log(twoSum([2, 11, 15, 7], 9));
