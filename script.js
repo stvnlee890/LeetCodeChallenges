@@ -134,19 +134,22 @@
 // console.log(isValid("()[]{}"));
 
 // ===== 27. Remove Element ======
-var removeElement = function (nums, val) {
-  let start = 0;
-  while (start < nums.length) {
-    if (nums[start] === val) {
-      nums.splice(start, 1)
-      // we have to decrement start because we're modifying the original array in-place. 
-      // so after a new loop, we might "skip" over a value and not splice it. 
-      start--;
-    } else {
-      start++;
-    }
-  }
-  return nums.length
-};
+// TIME COMPLEXITY: O(n)
+// SPACE COMPLEXITY: O(1)
 
-console.log(removeElement([0,1,2,2,3,0,4,2], 2));
+// var removeElement = function (nums, val) {
+//   let start = 0;
+//   while (start < nums.length) {
+//     if (nums[start] === val) {
+//       nums.splice(start, 1)
+//       // we have to decrement start because we're modifying the original array in-place. 
+//       // so after a new loop, we might "skip" over a value and not splice it. 
+//       start--;
+//     } else {
+//       start++;
+//     }
+//   }
+//   return nums.length
+// };
+
+// console.log(removeElement([0,1,2,2,3,0,4,2], 2));
