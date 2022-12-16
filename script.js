@@ -179,15 +179,27 @@
 
 // TIME COMPLEXTIY: O(N^2)
 // SPACE COMPLEXITY: O(1)
-var twoSum = function (nums, target) {
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = 1; j < nums.length; j++) {
-      let result = target - nums[i];
-      if (nums[j] === result) {
-        return [i, j];
-      }
-    }
-  }
-};
+// var twoSum = function (nums, target) {
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = 1; j < nums.length; j++) {
+//       let result = target - nums[i];
+//       if (nums[j] === result) {
+//         return [i, j];
+//       }
+//     }
+//   }
+// };
 
-console.log(twoSum([2, 11, 15, 7], 9));
+// console.log(twoSum([2, 11, 15, 7], 9));
+
+// 124. Valid Palindrome
+var isPalindrome = function (s) {
+  const regex = /[^A-Za-z0-9]/g;
+  const newStr = s.replace(regex, "").toLowerCase();
+  let backwards = "";
+  for (let i = newStr.length -1; i >= 0; i--) {
+    backwards += newStr[i];
+  }
+  return backwards === newStr
+};
+console.log(isPalindrome("A man, a plan, a canal: Panama"));
