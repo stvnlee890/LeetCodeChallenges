@@ -193,13 +193,33 @@
 // console.log(twoSum([2, 11, 15, 7], 9));
 
 // 124. Valid Palindrome
-var isPalindrome = function (s) {
-  const regex = /[^A-Za-z0-9]/g;
-  const newStr = s.replace(regex, "").toLowerCase();
-  let backwards = "";
-  for (let i = newStr.length -1; i >= 0; i--) {
-    backwards += newStr[i];
+// var isPalindrome = function (s) {
+//   const regex = /[^A-Za-z0-9]/g;
+//   const newStr = s.replace(regex, "").toLowerCase();
+//   let backwards = "";
+//   for (let i = newStr.length -1; i >= 0; i--) {
+//     backwards += newStr[i];
+//   }
+//   return backwards === newStr
+// };
+// console.log(isPalindrome("A man, a plan, a canal: Panama"));
+
+// 83. Remove Duplicate from Sorted List - Singly Linked List
+
+var deleteDuplicates = function (head) {
+  if(!head) return head
+  let curr = head
+  let next = curr.next
+  
+  while(next) {
+    if(curr.val !== next.val) {
+      curr = curr.next
+    } else {
+      next = next.next
+      curr.next = next
+    }
   }
-  return backwards === newStr
-};
-console.log(isPalindrome("A man, a plan, a canal: Panama"));
+  return head
+}
+
+console.log(deleteDuplicates([1,1,2]))
