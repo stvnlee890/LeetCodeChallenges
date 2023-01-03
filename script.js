@@ -206,20 +206,60 @@
 
 // 83. Remove Duplicate from Sorted List - Singly Linked List
 
-var deleteDuplicates = function (head) {
-  if(!head) return head
-  let curr = head
-  let next = curr.next
-  
-  while(next) {
-    if(curr.val !== next.val) {
-      curr = curr.next
+// var deleteDuplicates = function (head) {
+//   if(!head) return head
+//   let curr = head
+//   let next = curr.next
+
+//   while(next) {
+//     if(curr.val !== next.val) {
+//       curr = curr.next
+//     } else {
+//       next = next.next
+//       curr.next = next
+//     }
+//   }
+//   return head
+// }
+
+// 49. Group Anagrams
+
+// Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+// An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+// Input: strs = ["eat","tea","tan","ate","nat","bat"]
+// Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+// var groupAnagrams = function (strs) {
+//   const map = new Map();
+//   console.log(map)
+//   for (const original of strs) {
+//     const sorted = original
+//       .split("")
+//       .sort((a, b) => a.localeCompare(b))
+//       .join("");
+//     const values = map.get(sorted) || [];
+//     values.push(original);
+//     map.set(sorted, values);
+//   }
+//   return [...map.values()];
+// };
+
+var groupAnagrams = function (strs) {
+  if (!strs) return [];
+  let hash = {};
+  for (let i = 0; i < strs.length; i++) {
+    const sorted = strs[i]
+      .split("")
+      .sort((a, b) => a.localeCompare(b))
+      .join("");
+    if (!hash[sorted]) {
+      hash[sorted] = [strs[i]];
     } else {
-      next = next.next
-      curr.next = next
+      hash[sorted].push(strs[i]);
     }
   }
-  return head
-}
-
-console.log(deleteDuplicates([1,1,2]))
+  return Object.values(hash);
+};
+console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
+// console.log(groupAnagrams("tea"));
