@@ -245,21 +245,54 @@
 //   return [...map.values()];
 // };
 
-var groupAnagrams = function (strs) {
-  if (!strs) return [];
-  let hash = {};
-  for (let i = 0; i < strs.length; i++) {
-    const sorted = strs[i]
-      .split("")
-      .sort((a, b) => a.localeCompare(b))
-      .join("");
-    if (!hash[sorted]) {
-      hash[sorted] = [strs[i]];
-    } else {
-      hash[sorted].push(strs[i]);
-    }
-  }
-  return Object.values(hash);
-};
-console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
+// ===========================================
+// My Solution based on above Solution
+// var groupAnagrams = function (strs) {
+//   if (!strs) return [];
+//   // Initialize empty object
+//   let hash = {};
+//   for (let i = 0; i < strs.length; i++) {
+//     // sort each individual word in array so we can have an "identifier" for each word category and place them in the
+//     // proper "bucket"
+//     // Time Complexity: O(n log n)
+//     const sorted = strs[i]
+//       .split("")
+//       .sort((a, b) => a.localeCompare(b))
+//       .join("");
+//     // Check if the hash contains the sorted value, if not place it into an empty bucket
+//     if (!hash[sorted]) {
+//       hash[sorted] = [strs[i]];
+//     // If the hash has the sorted value, push it into the proper bucket
+//     } else {
+//       hash[sorted].push(strs[i]);
+//     }
+//   }
+//   return Object.values(hash);
+// };
+// console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
 // console.log(groupAnagrams("tea"));
+
+// 347. Top K Frequent Elements
+
+// Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+
+// var topKFrequent = function (nums, k) {
+//   if (nums.length === 1 && k === nums.length) return nums;
+//   const hash = {};
+//   for (let i = 0; i < nums.length; i++) {
+//     if (!hash[nums[i]]) {
+//       hash[nums[i]] = 1;
+//     } else {
+//       hash[nums[i]]++;
+//     }
+//   }
+// console.log(hash)
+//   let arr = [];
+//   for (const keys in hash) {
+    
+  
+//   }
+//   return arr;
+// };
+
+// console.log(topKFrequent([4,1,-1,2,-1,2,3], 2));
