@@ -304,19 +304,50 @@
 // Return the indices of the two numbers, index 1 and index 2, added by one as an
 // integer array of length 2
 
-var twoSum = function (numbers, target) {
-  let start = 0;
-  let scout = numbers.length - 1;
-  while (start < scout) {
-    let diff = target - numbers[start]
-    if(diff > numbers[scout]) {
-      start ++
-    }else if (diff < numbers[scout]) {
-      scout --
-    } else if(diff === numbers[scout]) {
-      return [start + 1, scout + 1]
-    }
-  }
-};
+// var twoSum = function (numbers, target) {
+//   let start = 0;
+//   let scout = numbers.length - 1;
+//   while (start < scout) {
+//     let diff = target - numbers[start]
+//     if(diff > numbers[scout]) {
+//       start ++
+//     }else if (diff < numbers[scout]) {
+//       scout --
+//     } else if(diff === numbers[scout]) {
+//       return [start + 1, scout + 1]
+//     }
+//   }
+// };
 
-console.log(twoSum([2, 7, 11, 15], 18));
+// console.log(twoSum([2, 7, 11, 15], 18));
+
+//==========================================================
+// 121. Best Time to Buy and Sell Stock
+
+// You are given an array prices where prices[i] is the price of a given 
+// stock on ith day.
+// You want to maximize your profit by choosing a single day to buy one
+// stock and choosing a different day in the future to sell that stock. 
+
+var maxProfit = function(prices) {
+ let start = 0;
+ let scout = 1;
+ let maxProfit = 0;
+ while(scout < prices.length) {
+  // check for lowest price
+  if(prices[start] < prices[scout]) {
+    let profit = prices[scout] - prices[start]
+    maxProfit = Math.max(maxProfit, profit)
+  } else {
+    start = scout
+  }
+  // as long as we a lowest price, we will continue to move the scout
+  // but if, we have a case where, the scout is lowest, we switch pointers
+  // start = scout
+  // then we go over the if process again
+  scout ++
+ }
+ return maxProfit
+}
+
+console.log(maxProfit([1,2,4,3,1]))
