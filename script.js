@@ -341,10 +341,10 @@ var maxProfit = function(prices) {
   } else {
     start = scout
   }
-  // as long as we a lowest price, we will continue to move the scout
+  // as long as we have a lowest price, we will continue to move the scout
   // but if, we have a case where, the scout is lowest, we switch pointers
   // start = scout
-  // then we go over the if process again
+  // the start becomes lowest, and we start the if process
   scout ++
  }
  return maxProfit
