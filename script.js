@@ -286,13 +286,37 @@
 //       hash[nums[i]]++;
 //     }
 //   }
-// console.log(hash)
+// // need to figure out how to push the proper K elements into arr
 //   let arr = [];
 //   for (const keys in hash) {
-    
-  
+
 //   }
 //   return arr;
 // };
 
 // console.log(topKFrequent([4,1,-1,2,-1,2,3], 2));
+
+//==========================================================
+// 167. Two Sum II - Input Array is Sorted
+
+// Given a 1-indexed array of integers numbers that is already sorted in non-decreasing
+// order, find two numbers such that they add up to a specific target number.
+// Return the indices of the two numbers, index 1 and index 2, added by one as an
+// integer array of length 2
+
+var twoSum = function (numbers, target) {
+  let start = 0;
+  let scout = numbers.length - 1;
+  while (start < scout) {
+    let diff = target - numbers[start]
+    if(diff > numbers[scout]) {
+      start ++
+    }else if (diff < numbers[scout]) {
+      scout --
+    } else if(diff === numbers[scout]) {
+      return [start + 1, scout + 1]
+    }
+  }
+};
+
+console.log(twoSum([2, 7, 11, 15], 18));
