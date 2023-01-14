@@ -276,25 +276,47 @@
 
 // Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
 
-// var topKFrequent = function (nums, k) {
-//   if (nums.length === 1 && k === nums.length) return nums;
-//   const hash = {};
-//   for (let i = 0; i < nums.length; i++) {
-//     if (!hash[nums[i]]) {
-//       hash[nums[i]] = 1;
-//     } else {
-//       hash[nums[i]]++;
-//     }
-//   }
-// // need to figure out how to push the proper K elements into arr
-//   let arr = [];
-//   for (const keys in hash) {
+var topKFrequent = function (nums, k) {
+ // create frequency counter
+  const hash = {};
+  for (let i = 0; i < nums.length; i++) {
+    if (!hash[nums[i]]) {
+      hash[nums[i]] = 1;
+    } else {
+      hash[nums[i]]++;
+    }
+  }
+  // create an empty bucket an populate it with empty buckets 
+  /* add one more to nums.length because if the nums array input is just one
+  we and the value of the frequency of that number is 1, the bucket we created
+  is just one, which bucket.length === 0. So we will be thrown with an error
+  */ 
+  const bucket = [];
+  for (let i = 0; i < nums.length + 1; i++) {
+    bucket.push([]);
+  }
+  // loop over hash map and start pushing to bucket 
+  // the value of the keys will correspond to which index they'll be placed in
+  for (const keys in hash) {
+    const index = hash[keys];
+    bucket[index].push(keys);
+  }
 
-//   }
-//   return arr;
-// };
+  // initialize empty array
+  let arr = [];
+  // iterate the bucket backwards since we want to push the higher indices since they 
+  // correspond to the most frequently occurred values
+  for (let i = bucket.length -1; i >= 0; i--) {
+    // when we push, we want to destructure the array so we only get the values in the 
+    // resulting array
+    arr.push(...bucket[i]);
+    // we return once the array has reached the k most frequent elements
+    if (arr.length === k) return arr;
+  }
+  return arr;
+};
 
-// console.log(topKFrequent([4,1,-1,2,-1,2,3], 2));
+console.log(topKFrequent([1], 2));
 
 //==========================================================
 // 167. Two Sum II - Input Array is Sorted
@@ -324,10 +346,10 @@
 //==========================================================
 // 121. Best Time to Buy and Sell Stock
 
-// You are given an array prices where prices[i] is the price of a given 
+// You are given an array prices where prices[i] is the price of a given
 // stock on ith day.
 // You want to maximize your profit by choosing a single day to buy one
-// stock and choosing a different day in the future to sell that stock. 
+// stock and choosing a different day in the future to sell that stock.
 
 // var maxProfit = function(prices) {
 //  let start = 0;
@@ -359,25 +381,25 @@ and an integer target, write a function to search target in nums. If
 target exists, then return its index. Otherwise, return -1.
 You must write an algorithm with O(log n) runtime complexity*/
 
-var search = function(nums, target) {
-  // find the middle point in array
-  const mid = Math.floor(nums.length / 2)
-  // if the target is the middle array return the middle index
-  if(nums[mid] === target) {
-    return mid
-  // if the target is greater than midpoint value only iterate the latter half
-  } else if (nums[mid] < target) {
-    for (let i = mid; i < nums.length; i ++) {
-      if(nums[i] === target) return i
-    }
-  // if the target is less than midpoint value only iterater the former hald
-  } else if (nums[mid] > target) {
-    for (let i = 0; i < mid; i ++) {
-      if(nums[i] === target) return i
-    }
-  }
-  // if there are no values that match target, return -1
-  return -1
-}
+// var search = function(nums, target) {
+//   // find the middle point in array
+//   const mid = Math.floor(nums.length / 2)
+//   // if the target is the middle array return the middle index
+//   if(nums[mid] === target) {
+//     return mid
+//   // if the target is greater than midpoint value only iterate the latter half
+//   } else if (nums[mid] < target) {
+//     for (let i = mid; i < nums.length; i ++) {
+//       if(nums[i] === target) return i
+//     }
+//   // if the target is less than midpoint value only iterater the former hald
+//   } else if (nums[mid] > target) {
+//     for (let i = 0; i < mid; i ++) {
+//       if(nums[i] === target) return i
+//     }
+//   }
+//   // if there are no values that match target, return -1
+//   return -1
+// }
 
-console.log(search([-1,0,3,5,9,12], 9))
+// console.log(search([-1,0,3,5,9,12], 9))
