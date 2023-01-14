@@ -329,25 +329,50 @@
 // You want to maximize your profit by choosing a single day to buy one
 // stock and choosing a different day in the future to sell that stock. 
 
-var maxProfit = function(prices) {
- let start = 0;
- let scout = 1;
- let maxProfit = 0;
- while(scout < prices.length) {
-  // check for lowest price
-  if(prices[start] < prices[scout]) {
-    let profit = prices[scout] - prices[start]
-    maxProfit = Math.max(maxProfit, profit)
-  } else {
-    start = scout
+// var maxProfit = function(prices) {
+//  let start = 0;
+//  let scout = 1;
+//  let maxProfit = 0;
+//  while(scout < prices.length) {
+//   // check for lowest price
+//   if(prices[start] < prices[scout]) {
+//     let profit = prices[scout] - prices[start]
+//     maxProfit = Math.max(maxProfit, profit)
+//   } else {
+//     start = scout
+//   }
+//   // as long as we have a lowest price, we will continue to move the scout
+//   // but if, we have a case where, the scout is lowest, we switch pointers
+//   // start = scout
+//   // the start becomes lowest, and we start the if process
+//   scout ++
+//  }
+//  return maxProfit
+// }
+
+// console.log(maxProfit([1,2,4,3,1]))
+
+//==========================================================
+// 704. Binary Search
+/*Given an array of integers nums which is sorted in ascending order,
+and an integer target, write a function to search target in nums. If
+target exists, then return its index. Otherwise, return -1.
+You must write an algorithm with O(log n) runtime complexity*/
+
+var search = function(nums, target) {
+  const mid = Math.floor(nums.length / 2)
+  if(nums[mid] === target) {
+    return mid
+  } else if (nums[mid] < target) {
+    for (let i = mid; i < nums.length; i ++) {
+      if(nums[i] === target) return i
+    }
+  } else if (nums[mid] > target) {
+    for (let i = 0; i < mid; i ++) {
+      if(nums[i] === target) return i
+    }
   }
-  // as long as we have a lowest price, we will continue to move the scout
-  // but if, we have a case where, the scout is lowest, we switch pointers
-  // start = scout
-  // the start becomes lowest, and we start the if process
-  scout ++
- }
- return maxProfit
+  return -1
 }
 
-console.log(maxProfit([1,2,4,3,1]))
+console.log(search([-1,0,3,5,9,12], 9))
