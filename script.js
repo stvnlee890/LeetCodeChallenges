@@ -360,18 +360,23 @@ target exists, then return its index. Otherwise, return -1.
 You must write an algorithm with O(log n) runtime complexity*/
 
 var search = function(nums, target) {
+  // find the middle point in array
   const mid = Math.floor(nums.length / 2)
+  // if the target is the middle array return the middle index
   if(nums[mid] === target) {
     return mid
+  // if the target is greater than midpoint value only iterate the latter half
   } else if (nums[mid] < target) {
     for (let i = mid; i < nums.length; i ++) {
       if(nums[i] === target) return i
     }
+  // if the target is less than midpoint value only iterater the former hald
   } else if (nums[mid] > target) {
     for (let i = 0; i < mid; i ++) {
       if(nums[i] === target) return i
     }
   }
+  // if there are no values that match target, return -1
   return -1
 }
 
