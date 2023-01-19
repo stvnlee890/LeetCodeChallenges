@@ -31,7 +31,7 @@ Incrementing by one gives 9 + 1 = 10.
 Thus, the result should be [1,0].
 */
 
-// Time Complexity: O(N) worst case is that if we have a 9 at the beginning of array we would have to shift the index of each element
+// Time Complexity: O(N) worst case is that if we have a 9 at the beginning of array we would have to shift the index of each element but also, we're iterating through entire array in worst case
 // Space Complexity: O(1) because we're modifying the input array in place and not creating extra memory
 var plusOne = function (digits) {
   if (digits[digits.length - 1] !== 9) {
