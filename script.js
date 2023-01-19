@@ -273,7 +273,8 @@
 // console.log(groupAnagrams("tea"));
 
 // 347. Top K Frequent Elements
-
+// Time Complexity O(N) because we have three separate loops
+// Space Complexity O(K)
 // Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
 
 var topKFrequent = function (nums, k) {
