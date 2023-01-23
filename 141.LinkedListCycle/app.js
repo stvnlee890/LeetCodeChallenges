@@ -24,3 +24,28 @@ Input: head = [1], pos = -1
 Output: false
 Explanation: There is no cycle in the linked list.
 */
+
+/*
+slow pointer and fast pointer approach
+Time Complexity: O(n) 
+    we traverse through entire linked list
+Space Complexity: O(1)
+*/
+
+var hasCycle = function(head) {
+    // return false if head is empty
+    if(!head) return false;
+    let slow = head;
+    let fast = head.next;
+
+    // exit loop and return true if we the slow pointer matches the fast pointer, which indicates we have a cycle
+    while(slow != fast) {
+        // we return false if the tail.next === false
+        if(fast == null || fast.next == null) return false
+        // slow pointer will traverse +1
+        slow = slow.next;
+        // fast pointer will traverse +2
+        fast = fast.next.next;
+    }
+    return true
+}
