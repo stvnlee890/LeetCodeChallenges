@@ -32,11 +32,11 @@ var deleteDuplicates = function (head) {
   while (next) {
     // if the value of curr === value of next enter while loop
     if (next !== null && curr.val === next.val) {
-        // while the curr val === next val keep looping
+      // while the curr val === next val keep looping
       while (next !== null && curr.val === next.val) {
         // increment the next pointer
         next = next.next;
-        // while icrementing the next pointer, make sure to move the curr pointer behind it 
+        // while icrementing the next pointer, make sure to move the curr pointer behind it
         // so that we know when to exit loop
         curr.next = next;
       }
@@ -48,7 +48,7 @@ var deleteDuplicates = function (head) {
       currDummy = currDummy.next;
     }
     // if next === node return
-    if(next === null) return dummy.next
+    if (next === null) return dummy.next;
     // increment nodes
     curr = curr.next;
     next = next.next;
@@ -56,3 +56,25 @@ var deleteDuplicates = function (head) {
   // we return dummy.next because if we simply returned dummy, we would also return the dummy value
   return dummy.next;
 };
+
+// Cleaner approach
+
+// var deleteDuplicates = function (head) {
+//   if (!head) return head;
+//   let dummy = new ListNode(0, head);
+//   let currDummy = dummy;
+//   let curr = head;
+
+//   while (curr !== null) {
+//     if (curr.next !== null && curr.val === curr.next.val) {
+//       while (curr.next !== null && curr.val === curr.next.val) {
+//         curr = curr.next;
+//       }
+//       currDummy.next = curr.next;
+//     } else {
+//       currDummy = currDummy.next;
+//     }
+//     curr = curr.next;
+//   }
+//   return dummy.next;
+// };
