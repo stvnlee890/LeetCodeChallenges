@@ -16,7 +16,12 @@ Input: x = 120
 Output: 21
 */
 
+/*
+Time Complexity: O(N)
+Space Complexity: O(1)
 
+This solution does pass the leetcode challenge but need to figure out a way to not store a 32-bit integer before checking
+*/
 var reverse = function(x) {
     let str = x.toString()
     let neg = ""
