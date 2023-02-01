@@ -89,7 +89,7 @@ var getIntersectionNode = function (headA, headB) {
 
   /*
   after we've synchronized the lists, enter final loop which checks if there's an intersection.
-  We don't check for "l1.val" because if we check for the vals, we're checking for the primitive data types and not their location in memory, 
+  We don't check for "l1.val" because if we check for the vals, we're checking for the primitive data types / values and not their location in memory, 
   and there are some cases where headA and headB hold the same values.
 
   How we know that these two lists intersect is by checking if the next pointer points to the same location in memory.
